@@ -74,3 +74,31 @@ def load_config(path):
     except Exception as e:
         raise RuntimeError("failed to load config") from e
 
+    ###################### testing
+    # qs1
+    assert safe_int(42) == 42
+    assert safe_int("abc") == None
+
+    # qs2
+    assert safe_divide(10, 5) == 2
+    assert safe_divide(10, 0) == "undefined"
+
+    # qs3
+    assert get_value({"a": 1}, "a") == 1
+    assert get_value({"a": 1}, "b") == "missing"
+
+    # qs4
+    assert parse_ints(["1", "2", "x", "3", "y"]) == [1, 2, 3]
+
+    # qs5
+    assert set_age(25) == 25
+
+    # qs6
+    assert retry(lambda: 1, 6) == 1
+
+    # qs7
+    assert count_errors([lambda: 1, lambda: 1 / 0, lambda: int("x"), lambda: 2]) == 2
+
+    # qs8
+    load_config("Exceptions.py")
+    "excessive"
