@@ -35,3 +35,9 @@ def complete_task(file_name, task_id):
             task["status"] = "DONE"
     save_tasks(file_name, all_tasks, "w")
 
+
+def list_tasks(file_name):
+    lst_tasks = load_tasks(file_name)
+    for task in lst_tasks:
+        line = f"{task["id"]} | {task["status"]} | {task["description"]}"
+        print(line)
