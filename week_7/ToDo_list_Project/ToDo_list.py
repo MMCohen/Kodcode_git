@@ -46,3 +46,34 @@ def list_tasks(file_name):
     for task in lst_tasks:
         line = f"{task["id"]} | {task["status"]} | {task["description"]}"
         print(line)
+
+
+def main():
+    FILENAME = "tasks.txt"
+    while True:
+        print("\n===== To-Do List Manager =====")
+        print("1. Show all tasks")
+        print("2. add task")
+        print("3. Mark Task as 'done'")
+        print("4. Exit")
+
+        user_choice = input("\nEnter your choice: ")
+
+        match user_choice:
+            case "1":
+                list_tasks(FILENAME)
+            case "2":
+                task_description = input("add task description: ")
+                add_task(FILENAME, task_description)
+                print("adding task complete!")
+            case "3":
+                task_id = input("enter task id: ")
+                complete_task(FILENAME, task_id)
+            case "4":
+                print("good by!")
+                break
+            case _:
+                print("incorrect choice!\n please try again!")
+
+if __name__ == "__main__":
+    main()
