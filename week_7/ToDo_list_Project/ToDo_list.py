@@ -13,8 +13,8 @@ def load_tasks(file_name: str) -> list:
     return tasks_lst
 
 
-def save_tasks(file_name: str, tasks:list[dict]):
-    with open(file_name, "a", encoding="utf-8") as f:
+def save_tasks(file_name: str, tasks:list[dict], mode = "a"):
+    with open(file_name, mode, encoding="utf-8") as f:
         for task in tasks:
             temp_line = f"{task["id"]}|{task["status"]}|{task["description"]}\n"
             f.write(temp_line)
@@ -28,6 +28,6 @@ def add_task(file_name, description):
     with open(file_name, "a", encoding="utf-8") as f:
         f.write(temp_line)
 
-add_task("note.txt", "hello")
+
 
 
