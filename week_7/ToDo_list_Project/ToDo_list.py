@@ -30,10 +30,15 @@ def add_task(file_name, description):
 
 def complete_task(file_name, task_id):
     all_tasks = load_tasks(file_name)
+    change_task = False
     for task in all_tasks:
         if task["id"] == task_id:
             task["status"] = "DONE"
-    save_tasks(file_name, all_tasks, "w")
+            change_task = True
+    if change_task:
+        save_tasks(file_name, all_tasks, "w")
+    else:
+        print("id does not exist!")
 
 
 def list_tasks(file_name):
