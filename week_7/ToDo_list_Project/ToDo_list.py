@@ -28,6 +28,10 @@ def add_task(file_name, description):
     with open(file_name, "a", encoding="utf-8") as f:
         f.write(temp_line)
 
-
-
+def complete_task(file_name, task_id):
+    all_tasks = load_tasks(file_name)
+    for task in all_tasks:
+        if task["id"] == task_id:
+            task["status"] = "DONE"
+    save_tasks(file_name, all_tasks, "w")
 
