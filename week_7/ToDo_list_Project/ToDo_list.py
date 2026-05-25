@@ -22,7 +22,7 @@ def save_tasks(file_name: str, tasks:list[dict], mode = "a"):
 
 def add_task(file_name, description):
     old_tasks = load_tasks(file_name)
-    next_id = int(old_tasks[-1]["id"]) + 1
+    next_id = int(old_tasks[-1]["id"]) + 1 if old_tasks else 1
     temp_line = f"{next_id}|pending|{description}\n"
 
     with open(file_name, "a", encoding="utf-8") as f:
