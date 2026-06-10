@@ -44,7 +44,8 @@ def count_by_unit():
     cursor.execute("""
     SELECT unit, count(unit) as total
     FROM soldiers
-    GROUP BY unit;
+    GROUP BY unit
+    ORDER BY total DESC;
     """)
     data = cursor.fetchall()
     cursor.close()
