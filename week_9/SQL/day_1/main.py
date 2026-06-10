@@ -1,17 +1,19 @@
 import uvicorn
 from fastapi import FastAPI
-from db import get_schema
+import db
+import setup
 app = FastAPI()
 
 
 @app.post("/setup")
 def status():
+    setup.setup()
     return {"status": "ok"}
 
 
 @app.get("/schema")
 def schema():
-    data = get_schema()
+    data = db.get_schema()
     return data
 
 

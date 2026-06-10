@@ -1,4 +1,4 @@
 .idea/ 
 .venv/
-__pychae__/
+__pycache__/
 try.py
