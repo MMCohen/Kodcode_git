@@ -33,5 +33,26 @@ def get_summary():
 
     return data_dict
 
+
+def count_by_unit():
+    """
+    :return: list of dicts with [{"unit": "8200", "total": 4}, ...]
+    """
+    connector = get_connector()
+    cursor = connector.cursor(dictionary=True)
+
+    cursor.execute("""
+    SELECT unit, count(unit) as total
+    FROM soldiers
+    GROUP BY unit;
+    """)
+    data = cursor.fetchall()
+    cursor.close()
+    connector.close()
+
+    return data
+
 if __name__ == "__main__":
-    print(get_summary())
+    # print(get_summary())
+    print(count_by_unit())
+    # print(get_summary())
