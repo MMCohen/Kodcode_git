@@ -19,6 +19,10 @@ def get_units_with_multiple_soldiers():
     return reports.get_units_with_multiple_soldiers()
 
 
+@app.get("/soldiers/missing-rank")
+def get_missing_data():
+    return reports.get_missing_data()
+
 
 
 if __name__ == "__main__":
