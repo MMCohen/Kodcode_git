@@ -52,7 +52,28 @@ def count_by_unit():
 
     return data
 
+
+def get_missing_data():
+    """
+    :return: list of dicts of Soldiers where rank IS NULL
+    """
+    connector = get_connector()
+    cursor = connector.cursor(dictionary=True)
+
+    cursor.execute("""
+    SELECT *
+    FROM soldiers
+    WHERE soldier_rank is NULL;
+    """)
+
+    data = cursor.fetchall()
+
+    cursor.close()
+    connector.close()
+
+    return data
+
 if __name__ == "__main__":
     # print(get_summary())
-    print(count_by_unit())
-    # print(get_summary())
+    # print(count_by_unit())
+    print(get_missing_data())
