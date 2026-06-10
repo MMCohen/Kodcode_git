@@ -98,4 +98,5 @@ if __name__ == "__main__":
     # print(get_summary())
     # print(count_by_unit())
     # print(get_missing_data())
-    print(get_units_with_multiple_soldiers())
+    # print(get_units_with_multiple_soldiers())
+    ...
