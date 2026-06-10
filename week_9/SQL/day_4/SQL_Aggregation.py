@@ -74,7 +74,28 @@ def get_missing_data():
 
     return data
 
+
+def get_units_with_multiple_soldiers():
+    connector = get_connector()
+    cursor = connector.cursor(dictionary=True)
+
+    cursor.execute("""
+    SELECT unit, COUNT(unit) as total
+    FROM soldiers
+    GROUP BY unit
+    HAVING unit > 1;
+    """)
+
+    data = cursor.fetchall()
+
+    cursor.close()
+    connector.close()
+
+    return data
+
+
 if __name__ == "__main__":
     # print(get_summary())
     # print(count_by_unit())
-    print(get_missing_data())
+    # print(get_missing_data())
+    print(get_units_with_multiple_soldiers())
