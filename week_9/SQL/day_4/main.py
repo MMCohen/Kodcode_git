@@ -14,5 +14,12 @@ def count_by_unit():
     return reports.count_by_unit()
 
 
+@app.get("/stats/understaffed")
+def get_units_with_multiple_soldiers():
+    return reports.get_units_with_multiple_soldiers()
+
+
+
+
 if __name__ == "__main__":
     uvicorn.run(app)
